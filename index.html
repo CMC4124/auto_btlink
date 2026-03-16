@@ -5,27 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto BT Link - 藍牙聊天</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <!-- 頂部標題欄 -->
         <header class="header">
-            <h1>🔗 Auto BT Link</h1>
-            <div class="connection-status" id="connectionStatus">
-                <span class="status-dot disconnected"></span>
-                <span class="status-text">未連接</span>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🔗</div>
+                    <span class="logo-text">Auto BT</span>
+                </div>
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot disconnected"></span>
+                    <span class="status-text">未連接</span>
+                </div>
             </div>
         </header>
 
         <!-- 藍牙配對區域 -->
         <section class="bluetooth-section" id="bluetoothSection">
-            <div class="device-info" id="deviceInfo" style="display: none;">
-                <span class="device-name" id="deviceName"></span>
-                <button class="btn btn-disconnect" id="disconnectBtn">斷開連接</button>
+            <div class="device-card" id="deviceInfo" style="display: none;">
+                <div class="device-info">
+                    <div class="device-icon">📱</div>
+                    <div>
+                        <div class="device-name" id="deviceName">設備名稱</div>
+                        <div class="device-status">已連接</div>
+                    </div>
+                </div>
+                <button class="btn btn-disconnect" id="disconnectBtn">斷開</button>
             </div>
             <button class="btn btn-scan" id="scanBtn">
-                <span class="btn-icon">📱</span>
-                掃描設備
+                <span>📡</span>
+                掃描連接設備
             </button>
         </section>
 
@@ -34,9 +48,8 @@
             <div class="messages" id="messages">
                 <div class="message system">
                     <div class="message-content">
-                        歡迎使用 Auto BT Link！請先掃描並連接藍牙設備開始聊天。🤖
+                        👋 歡迎使用 Auto BT Link！<br>請掃描並連接藍牙設備開始聊天
                     </div>
-                    <div class="message-time">--:--</div>
                 </div>
             </div>
         </main>
@@ -44,28 +57,14 @@
         <!-- 輸入區域 -->
         <footer class="input-area" id="inputArea">
             <div class="input-controls">
-                <button class="btn-icon-btn" id="imageBtn" title="發送圖片">
-                    🖼️
-                </button>
-                <button class="btn-icon-btn" id="videoBtn" title="發送影片">
-                    🎬
-                </button>
-                <button class="btn-icon-btn" id="fileBtn" title="發送文件">
-                    📎
-                </button>
+                <button class="btn-icon-btn" id="imageBtn" title="發送圖片">🖼️</button>
+                <button class="btn-icon-btn" id="videoBtn" title="發送影片">🎬</button>
+                <button class="btn-icon-btn" id="fileBtn" title="發送文件">📎</button>
             </div>
             <div class="input-row">
-                <input 
-                    type="text" 
-                    id="messageInput" 
-                    placeholder="輸入訊息..." 
-                    disabled
-                >
-                <button class="btn btn-send" id="sendBtn" disabled>
-                    發送
-                </button>
+                <input type="text" id="messageInput" placeholder="輸入訊息..." disabled>
+                <button class="btn-send" id="sendBtn" disabled>➤</button>
             </div>
-            <!-- 隱藏的文件輸入 -->
             <input type="file" id="imageInput" accept="image/*" hidden>
             <input type="file" id="videoInput" accept="video/*" hidden>
             <input type="file" id="fileInput" hidden>
@@ -84,7 +83,7 @@
         <!-- 預覽modal -->
         <div class="modal" id="previewModal">
             <div class="modal-content preview-content">
-                <span class="close-modal" id="closePreview">&times;</span>
+                <span class="close-modal" id="closePreview">✕</span>
                 <img id="previewImage" src="" alt="預覽">
                 <video id="previewVideo" src="" controls></video>
             </div>
