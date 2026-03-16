@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto BT Link - 藍牙聊天</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 頂部標題欄 -->
+        <header class="header">
+            <h1>🔗 Auto BT Link</h1>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot disconnected"></span>
+                <span class="status-text">未連接</span>
+            </div>
+        </header>
+
+        <!-- 藍牙配對區域 -->
+        <section class="bluetooth-section" id="bluetoothSection">
+            <div class="device-info" id="deviceInfo" style="display: none;">
+                <span class="device-name" id="deviceName"></span>
+                <button class="btn btn-disconnect" id="disconnectBtn">斷開連接</button>
+            </div>
+            <button class="btn btn-scan" id="scanBtn">
+                <span class="btn-icon">📱</span>
+                掃描設備
+            </button>
+        </section>
+
+        <!-- 聊天區域 -->
+        <main class="chat-container" id="chatContainer">
+            <div class="messages" id="messages">
+                <div class="message system">
+                    <div class="message-content">
+                        歡迎使用 Auto BT Link！請先掃描並連接藍牙設備開始聊天。🤖
+                    </div>
+                    <div class="message-time">--:--</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 輸入區域 -->
+        <footer class="input-area" id="inputArea">
+            <div class="input-controls">
+                <button class="btn-icon-btn" id="imageBtn" title="發送圖片">
+                    🖼️
+                </button>
+                <button class="btn-icon-btn" id="videoBtn" title="發送影片">
+                    🎬
+                </button>
+                <button class="btn-icon-btn" id="fileBtn" title="發送文件">
+                    📎
+                </button>
+            </div>
+            <div class="input-row">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="輸入訊息..." 
+                    disabled
+                >
+                <button class="btn btn-send" id="sendBtn" disabled>
+                    發送
+                </button>
+            </div>
+            <!-- 隱藏的文件輸入 -->
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <input type="file" id="videoInput" accept="video/*" hidden>
+            <input type="file" id="fileInput" hidden>
+        </footer>
+
+        <!-- 配對請求modal -->
+        <div class="modal" id="pairingModal">
+            <div class="modal-content">
+                <h3>📱 藍牙配對</h3>
+                <p>正在掃描附近設備...</p>
+                <div class="device-list" id="deviceList"></div>
+                <button class="btn btn-cancel" id="cancelScan">取消</button>
+            </div>
+        </div>
+
+        <!-- 預覽modal -->
+        <div class="modal" id="previewModal">
+            <div class="modal-content preview-content">
+                <span class="close-modal" id="closePreview">&times;</span>
+                <img id="previewImage" src="" alt="預覽">
+                <video id="previewVideo" src="" controls></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bluetooth.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
