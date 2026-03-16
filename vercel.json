@@ -1,15 +1,14 @@
 {
+    "buildCommand": "echo 'Static site - no build needed'",
+    "outputDirectory": ".",
     "rewrites": [
-        { "source": "/(.*)", "destination": "/" }
+        { "source": "/(.*)", "destination": "/index.html" }
     ],
     "headers": [
         {
             "source": "/(.*)",
             "headers": [
-                {
-                    "key": "Permissions-Policy",
-                    "value": "bluetooth=(self)"
-                }
+                { "key": "Permissions-Policy", "value": "bluetooth=(self)" }
             ]
         }
     ]
